@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Muddy Blooms</title>
+    <link rel="icon" type="image/png" href="images/icons/mb-logo.jpg"> <!-- Ensure this path is correct, e.g., images/favicon.png -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome CDN - Crucial for many icons (phone, envelope, social, list bullets) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Three.js CDN for 3D background animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP BAR - Consistent across all pages -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> +91 94471 93598</span>
+                <span><i class="fas fa-envelope"></i> muddyblooms@gmail.com</span>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/muddyblooms/" target="_blank" rel="noopener noreferrer"><img src="images/icons/facebook-icon.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/muddy__blooms/?hl=en" target="_blank" rel="noopener noreferrer"><img src="images/icons/instagram-icon.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER - Consistent across all pages -->
+    <header class="main-header">
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><h1>Muddy Blooms</h1></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="catalog.pdf" target="_blank">Our Plant Catalog</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li> <!-- Consistent naming -->
+                    <li><a href="locations.html">Locations</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="tel:+919447193598"><img src="images/icons/phone-icon.png" alt="Call Us"></a>
+                <!-- Mail icon removed as per previous discussion -->
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO SECTION - About Us Specific with 3D Canvas -->
+    <section class="page-hero">
+        <canvas id="aboutHeroCanvas"></canvas> <!-- Canvas for Three.js animation -->
+        <div class="hero-content">
+            <h1>Our Story: Cultivating Green Dreams</h1>
+            <p>Discover the passion and purpose behind Muddy Blooms.</p>
+        </div>
+    </section>
+
+    <!-- ABOUT US MAIN CONTENT SECTION -->
+    <section class="about-us-content content-section"> <!-- Added content-section for consistent padding -->
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Our Journey from a Seed of an Idea</h2>
+                    <p>Muddy Blooms began in 2018 with a simple, yet profound love for nature and a vision to bring green spaces to life. What started as a small local nursery and a passion for gardening has blossomed into a comprehensive landscaping and plant solutions provider.</p>
+                    <p>We saw the potential to transform ordinary spaces into extraordinary natural retreats, whether it's a serene home garden in Kottayam, a vibrant landscape for a luxury resort, or enhancing commercial properties with bespoke plant designs. Our journey has been defined by continuous learning, dedication to sustainable practices, and an unwavering commitment to our clients' visions.</p>
+
+                    <br>
+                    <h2>Our Mission: Nurturing Nature, Enriching Lives</h2>
+                    <p>At Muddy Blooms, our mission extends beyond just planting. We are dedicated to **designing, creating, and maintaining beautiful, functional, and sustainable landscapes** that reflect the unique needs and desires of our clients. For indoor spaces, we aim to provide **healthy, hand-picked plants** that add beauty, purity, and life to any environment – from cozy homes to grand resorts.</p>
+                    <p>We believe that every green space, big or small, has the power to enhance well-being and bring joy. We're committed to making that a reality.</p>
+
+                    <br>
+                    <h2>Our Core Values</h2>
+                    <ul>
+                        <li>🌿 <strong>Passion for Greenery:</strong> We live and breathe plants and design, bringing genuine enthusiasm to every project.</li>
+                        <li>🌿 <strong>Sustainability at Heart:</strong> We prioritize eco-friendly practices, water conservation, and native plant selections whenever possible.</li>
+                        <li>🌿 <strong>Uncompromising Quality:</strong> From the soil we use to the last planted shrub, excellence is our standard.</li>
+                        <li>🌿 <strong>Client-Centric Approach:</strong> Your vision is our blueprint. We listen, collaborate, and deliver results that exceed expectations.</li>
+                        <li>🌿 <strong>Local Expertise:</strong> With deep roots in Kerala, we understand the climate, flora, and specific needs of the region.</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="images/index/about.jpg" alt="Muddy Blooms Team or founder">
+                    <p class="text-center" style="font-style: italic; margin-top: 15px; color: #555;">Our dedicated team bringing your green dreams to life.</p>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 60px;">
+                <p style="font-size: 1.2em; color: #333;">Ready to transform your space? Let's create something beautiful together!</p>
+                <a href="tel:919447193598" class="btn-primary" style="margin-top: 20px;">Contact Us Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN FOOTER - Consistent across all pages -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-col">
+                <h3>Muddy Blooms</h3>
+                <p>Your partner in creating lush landscapes and vibrant indoor greenery across Kerala.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="catalog.pdf" target="_blank">Our Plant Catalog</a></li>
+                    <li><a href="locations.html">Locations</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kadappoor, Vattukulam P.O, Kerala</p>
+                <p><i class="fas fa-phone"></i> +91 94471 93598</p>
+                <p><i class="fas fa-envelope"></i> muddyblooms@gmail.com</p>
+                
+            </div>
+           
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Muddy Blooms. All rights reserved.</p>
+            <p>Designed by Niya Abraham</p>
+        </div>
+    </footer>
+
+    <!-- Your custom JavaScript file -->
+    <script src="script.js"></script>
+
+</body>
+</html>

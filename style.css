@@ -1,0 +1,1184 @@
+/* Basic Resets & Global Styles */
+:root {
+    --primary-green: #006400;      /* A slightly darker, more prominent green */
+    --primary-green-dark: #004d00; /* Darker shade for hover states */
+    --light-green: #e9f5e9;        /* For subtle backgrounds */
+    --dark-text: #333;             /* Dark text for light backgrounds */
+    --light-text: #f8f8f8;         /* Light background color for sections */
+    --text-color: #444;            /* General paragraph text color */
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --hover-green: #008000;        /* A slightly brighter green for hovers */
+    --secondary-color: #2e8b57;    /* A complementary green for icons/accents */
+    --secondary-button-color: #f0f0f0; /* Light background for secondary button */
+    --secondary-button-text: #333;
+}
+
+body {
+    overflow-x: hidden; /* Prevents horizontal scrollbar for overflow issues */
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-text);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Reusable container for content width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* General section padding */
+.content-section {
+    padding: 60px 0;
+}
+
+/* Utility classes for text alignment and margins */
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 30px; /* Consistent margin for buttons below sections */
+}
+
+
+/* --- Top Bar --- */
+.top-bar {
+    background-color: var(--primary-green-dark);
+    color: #fff;
+    padding: 10px 0;
+    font-size: 0.9em;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allows content to wrap on small screens */
+}
+
+.top-bar .contact-info span {
+    margin-right: 20px;
+}
+
+.top-bar .contact-info i {
+    margin-right: 5px;
+}
+
+
+/* --- Main Header --- */
+.main-header {
+    background-color: #fff;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    position: relative; /* Needed for positioning hamburger menu */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--primary-green);
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    font-weight: 600;
+    color: var(--dark-text);
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--hover-green);
+}
+
+/* Active navigation link style */
+.main-nav ul li a.active {
+    color: var(--primary-green-dark);
+    font-weight: 700;
+}
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.header-icons img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+
+/* --- Hero Section (for index.html - with image slider and zoom) --- */
+@keyframes zoomInEffect {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+.hero-section {
+    position: relative;
+    height: 500px; /* Fixed height for the hero section */
+    overflow: hidden; /* Crucial to prevent scrollbars during zoom */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-background-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Behind the hero-content */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0; /* Start hidden for fade-in effect */
+    transition: opacity 1.5s ease-in-out; /* Smooth fade effect */
+    animation: zoomInEffect 8s forwards; /* Zoom effect on the background images */
+}
+
+.hero-background-slider.active {
+    opacity: 1; /* Make visible */
+}
+
+.hero-section .hero-content {
+    z-index: 2; /* Ensures content is above slider and overlay */
+    position: relative; /* Needed for z-index to work */
+}
+
+.hero-section::before { /* Dark overlay for text readability */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1; /* Between slider and content */
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+
+/* --- Primary Button Styling --- */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary-green);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin: 0 10px; /* Margin for spacing between buttons */
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-green-dark);
+}
+
+/* --- Secondary Button Styling --- */
+.btn-secondary {
+    display: inline-block;
+    background-color: var(--secondary-button-color);
+    color: var(--secondary-button-text);
+    padding: 15px 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    margin: 0 10px;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-green);
+    color: #fff;
+    border-color: var(--primary-green);
+}
+
+
+/* --- Featured Products Section (from index.html) --- */
+.products-section {
+    padding: 60px 0;
+    background-color: var(--light-text);
+    text-align: center;
+}
+
+.products-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: var(--primary-green);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.product-item img {
+    max-width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.product-item h3 {
+    font-size: 1.4em;
+    color: var(--dark-text);
+    margin-bottom: 10px;
+}
+
+
+/* --- Why Choose Us / Features Section (from index.html, potentially used elsewhere) --- */
+.features-section {
+    padding: 60px 0;
+    background-color: var(--light-green);
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: var(--primary-green);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.feature-item img { /* This specifically targets the "Why Choose Us" images */
+    width: 120px;   /* Adjusted to be larger */
+    height: 120px;  /* Adjusted to be larger */
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.feature-item h3 {
+    font-size: 1.4em;
+    color: var(--primary-green);
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 0.95em;
+    color: #666;
+    line-height: 1.5;
+}
+
+
+/* --- Page Specific Hero Section (for landscaping.html, about-us.html, locations.html, faq.html) --- */
+.page-hero {
+    /* No background-image property here, as canvas or JS will set it for some pages */
+    background-size: cover; /* Fallback for pages where image is still directly set via HTML style */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    position: relative; /* Crucial for positioning canvas and content */
+    padding: 20px;
+}
+
+/* Specific styling for the canvas within page-hero (e.g., about-us.html) */
+.page-hero canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block; /* Ensure canvas takes full space */
+    z-index: 0; /* Behind other content and overlay */
+}
+
+.page-hero::before { /* Dark overlay for text readability */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Adjust opacity as needed */
+    z-index: 1; /* Between canvas/image and content */
+}
+
+.page-hero .hero-content { /* Ensures text and buttons are on top */
+    z-index: 2;
+    max-width: 900px;
+    position: relative; /* Necessary for z-index to work */
+}
+
+.page-hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.page-hero p {
+    font-size: 1.2em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    margin-bottom: 30px; /* Only if page-hero has content like buttons */
+}
+
+
+.landscaping-section {
+    padding: 60px 0;
+    background-color: #f8f8f8; /* A slightly different background to differentiate */
+    text-align: center;
+}
+
+.landscaping-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--primary-green);
+}
+
+.landscaping-section .section-intro {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto 50px auto; /* Center and add space */
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Updated Landscaping Grid for 3 equal columns on desktop */
+.landscaping-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Forces 3 equal columns on desktop */
+    gap: 30px; /* Space between items */
+    justify-content: center; /* Center the grid within the container if it doesn't fill 100% */
+}
+
+/* Updated Landscaping Item to control individual item width and center content */
+.landscaping-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content vertically */
+    justify-content: flex-start; /* Align content to the top */
+
+    /* Add max-width to prevent items from stretching too wide on large screens */
+    /* This value can be adjusted based on your preference for item size */
+    max-width: 380px; /* Example: Keeps cards from getting excessively wide */
+    margin: 0 auto; /* Centers the item within its grid cell */
+}
+
+.landscaping-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.landscaping-item img {
+    max-width: 100%;
+    height: 200px; /* Keep height controlled */
+    object-fit: cover; /* Ensures images fill the space without distortion */
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.landscaping-item h3 {
+    font-size: 1.5em;
+    color: var(--primary-green);
+    margin-bottom: 10px;
+}
+
+.landscaping-item p {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Responsive Adjustments for Landscaping Grid */
+@media (max-width: 992px) {
+    .landscaping-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .landscaping-grid {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+}
+
+
+/* Key Services Section */
+.bg-light-green {
+    background-color: var(--light-green);
+}
+
+.section-description {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.key-services-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.key-services-section h2 {
+    margin-bottom: 50px;
+    color: var(--primary-green);
+    font-size: 2.5em;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.service-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.service-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    font-size: 3em;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.service-item h3 {
+    font-size: 1.4em;
+    color: var(--primary-green);
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 0.95em;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Our Landscaping Process Section */
+.process-section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #fcfcfc;
+}
+
+.process-section h2 {
+    margin-bottom: 50px;
+    color: var(--primary-green);
+    font-size: 2.5em;
+}
+
+.process-steps {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.process-step {
+    flex-basis: 280px;
+    max-width: 280px;
+    text-align: center;
+    position: relative;
+}
+
+.step-icon {
+    font-size: 2.5em;
+    color: #fff;
+    background-color: var(--primary-green);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.process-step h3 {
+    font-size: 1.3em;
+    color: var(--primary-green);
+    margin-bottom: 10px;
+}
+
+.process-step p {
+    font-size: 0.9em;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Transformations (Before & After) Section */
+.bg-light-gray {
+    background-color: var(--light-gray);
+}
+
+.transformations-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.transformations-section h2 {
+    margin-bottom: 20px;
+    color: var(--primary-green);
+    font-size: 2.5em;
+}
+
+.transformation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.transformation-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    text-align: left;
+}
+
+.transformation-item .image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%; /* 4:3 aspect ratio */
+    overflow: hidden;
+}
+
+.transformation-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.transformation-item h4 {
+    font-size: 1.2em;
+    color: var(--primary-green);
+    margin: 20px 20px 10px;
+}
+
+.transformation-item p {
+    font-size: 0.9em;
+    color: var(--text-color);
+    margin: 0 20px 20px;
+    line-height: 1.5;
+}
+
+
+/* --- About Us Page Specific Styles --- */
+.about-us-content {
+    background-color: var(--light-text);
+    padding: 60px 0;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.about-text h2 {
+    font-size: 2em;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.about-text ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+.about-text ul li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.about-text ul li::before {
+    content: '🌿';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-green);
+    font-size: 1.2em;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+
+/* --- Locations Page Specific Styles --- */
+.locations-content {
+    background-color: var(--light-text);
+    padding: 60px 0;
+}
+
+.locations-content h2 {
+    font-size: 2.2em;
+    color: var(--primary-green);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.location-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+    margin-bottom: 40px;
+}
+
+.contact-info h3 {
+    font-size: 1.8em;
+    color: var(--primary-green-dark);
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.contact-info p,
+.contact-info ul {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.contact-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.contact-info ul li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 5px;
+}
+
+.contact-info ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-green);
+    font-weight: bold;
+}
+
+.contact-info a {
+    color: var(--primary-green);
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.map-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+
+/* --- FAQ Section Styles --- */
+.faq-section {
+    padding: 60px 0;
+    background-color: var(--light-gray);
+}
+
+.faq-section h2 {
+    text-align: center;
+    font-size: 2.2em;
+    color: var(--primary-green);
+    margin-bottom: 40px;
+}
+
+.faq-item {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.faq-question {
+    display: block;
+    padding: 20px 25px;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: var(--primary-green);
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.faq-question::after {
+    content: '+';
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    line-height: 1;
+    transition: transform 0.3s ease;
+    color: var(--secondary-color);
+}
+
+.faq-item[open] .faq-question::after {
+    content: '-';
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.faq-answer {
+    padding: 0 25px 20px;
+    font-size: 0.95em;
+    color: var(--text-color);
+    line-height: 1.6;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+
+/* --- Main Footer --- */
+.main-footer {
+    background-color: #222;
+    color: #fff;
+    padding: 60px 0 20px;
+    font-size: 0.95em;
+}
+
+.main-footer h3 {
+    color: var(--primary-green);
+    font-size: 1.4em;
+    margin-bottom: 25px;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+    text-align: left;
+}
+
+.footer-about p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    filter: invert(1);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.social-icons img:hover {
+    opacity: 1;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-green);
+}
+
+.footer-contact p {
+    margin-bottom: 10px;
+}
+
+.footer-newsletter input[type="email"] {
+    width: calc(100% - 100px);
+    padding: 12px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+.footer-newsletter .btn-primary {
+    padding: 12px 20px;
+    font-size: 0.9em;
+    width: auto;
+    margin: 0;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.85em;
+    color: #bbb;
+    margin-top: 40px;
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+}
+
+
+/* --- Hamburger Menu and Mobile Nav Styles --- */
+.hamburger-menu {
+    width: 30px;
+    height: 25px;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 100;
+    display: none;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-text);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+body.menu-open .hamburger-menu {
+    position: fixed;
+    top: 30px;
+    left: 20px;
+    z-index: 150;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .about-image {
+        order: -1;
+    }
+    .location-details {
+        grid-template-columns: 1fr;
+    }
+    .page-hero h1 {
+        font-size: 2.5em;
+    }
+    .page-hero p {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Header Adjustments */
+    .top-bar .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+    .main-header .container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+    }
+    .hamburger-menu {
+        display: flex;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 101;
+    }
+    .header-icons {
+        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        gap: 15px;
+        z-index: 101;
+    }
+    .main-header .logo {
+        text-align: center;
+        flex-grow: 1;
+    }
+    .main-header .logo h1 {
+        font-size: 1.6em;
+        margin: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .main-nav {
+        display: none;
+        flex-basis: 100%;
+        order: 10;
+    }
+    body.menu-open .main-nav {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 60px);
+        background-color: #fff;
+        z-index: 99;
+        overflow-y: auto;
+        padding-top: 20px;
+        align-items: center;
+        gap: 20px;
+    }
+    body.menu-open .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    body.menu-open .main-nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+    body.menu-open .main-nav ul li a {
+        padding: 15px 0;
+        display: block;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* General responsive for sections */
+    .hero-section, .page-hero {
+        height: 350px;
+    }
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .hero-content p {
+        font-size: 1.1em;
+    }
+    .products-section h2,
+    .landscaping-section h2,
+    .key-services-section h2,
+    .process-section h2,
+    .transformations-section h2,
+    .features-section h2,
+    .about-text h2,
+    .locations-content h2,
+    .faq-section h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    .product-grid,
+    .services-grid,
+    .features-grid,
+    .process-steps,
+    .transformation-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .product-item, .service-item, .feature-item, .process-step, .transformation-item {
+        max-width: 100%;
+        padding: 20px;
+    }
+    .feature-item img {
+        width: 100px;
+        height: 100px;
+    }
+    .step-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2em;
+    }
+
+    /* FAQ Specific Mobile Adjustments */
+    .faq-question {
+        padding: 15px 20px;
+        font-size: 1em;
+    }
+    .faq-question::after {
+        right: 15px;
+        font-size: 1.2em;
+    }
+    .faq-answer {
+        padding: 0 20px 15px;
+        font-size: 0.9em;
+        padding-top: 10px;
+    }
+
+    /* Footer Mobile Adjustments */
+    .main-footer .container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    .footer-col {
+        min-width: unset;
+        width: 100%;
+    }
+    .footer-about, .footer-links, .footer-contact, .footer-newsletter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-newsletter input[type="email"] {
+        width: calc(100% - 150px);
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 0.9em;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    .products-section h2,
+    .landscaping-section h2,
+    .key-services-section h2,
+    .process-section h2,
+    .transformations-section h2,
+    .features-section h2,
+    .about-text h2,
+    .locations-content h2,
+    .faq-section h2 {
+        font-size: 1.8em;
+    }
+}
