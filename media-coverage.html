@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muddy Blooms - Media Coverage</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Inter font and additional aesthetics */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e8edf2 100%); /* Lighter, cooler background gradient */
+            color: #333;
+            min-height: 100vh; /* Ensure body takes full height for gradient */
+            animation: backgroundGradient 20s ease infinite alternate; /* Subtle background animation */
+        }
+
+        /* Keyframes for background gradient animation */
+        @keyframes backgroundGradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0; /* Lighter track */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8; /* Greyish blue thumb */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b; /* Darker greyish blue on hover */
+        }
+
+        /* Hero section specific styles */
+        .hero-section {
+            background-color: #d1e7e0; /* Softer green/blue background */
+            padding: 4rem 0;
+            text-align: center;
+            border-bottom-left-radius: 25px; /* Slightly more rounded */
+            border-bottom-right-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for hero */
+            overflow: hidden; /* Hide overflow for slide-in animation */
+        }
+        .hero-section h1 {
+            color: #1a4d2e; /* Darker green for heading */
+            animation: slideInUp 0.8s ease-out forwards; /* Animation for heading */
+            opacity: 0; /* Start hidden */
+            transform: translateY(20px); /* Start slightly below */
+        }
+        .hero-section p {
+            color: #4a5568; /* Slightly darker text */
+            animation: slideInUp 0.8s ease-out forwards 0.2s; /* Animation for paragraph, delayed */
+            opacity: 0; /* Start hidden */
+            transform: translateY(20px); /* Start slightly below */
+        }
+
+        /* Keyframes for slide-in-up animation */
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Media card specific styles */
+        .media-card {
+            background-color: #ffffff;
+            border-radius: 18px; /* More rounded corners */
+            border: 1px solid #e2e8f0; /* Subtle border */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05); /* Lighter, softer shadow */
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            opacity: 0; /* Start hidden for staggered animation */
+            transform: translateY(20px); /* Start slightly below */
+            animation: fadeInSlideUp 0.6s ease-out forwards; /* Base animation for cards */
+        }
+        /* Staggered animation for cards */
+        .media-grid .media-card:nth-child(1) { animation-delay: 0.4s; }
+        .media-grid .media-card:nth-child(2) { animation-delay: 0.6s; }
+        .media-grid .media-card:nth-child(3) { animation-delay: 0.8s; }
+        .media-grid .media-card:nth-child(4) { animation-delay: 1.0s; }
+        .media-grid .media-card:nth-child(5) { animation-delay: 1.2s; }
+        /* Add more as needed for more cards */
+
+        /* Keyframes for fade-in-slide-up animation */
+        @keyframes fadeInSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .media-card:hover {
+            transform: translateY(-8px); /* More pronounced lift */
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.1); /* Larger shadow on hover */
+            border-color: #34d399; /* Green border on hover */
+        }
+
+        .media-thumbnail-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+        }
+
+        .media-thumbnail-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .media-card:hover .media-thumbnail-container img {
+            transform: scale(1.08); /* More zoom on hover */
+        }
+
+        .media-content {
+            padding: 1rem; /* Slightly more padding */
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .media-content h3 {
+            color: #1a4d2e; /* Dark green for titles */
+            font-size: 1.75rem; /* Slightly larger title */
+            line-height: 1.3;
+            margin-bottom:0.5rem;
+        }
+        .media-content p {
+            color: #4a5568;
+        }
+        .media-content strong {
+            color: #2d3748; /* Darker for strong text */
+        }
+        .media-content p.text-gray-600.text-sm.mb-3 { /* Targeting the date/topic paragraph */
+            margin-bottom: 0.5rem; /* Reduced from 0.75rem (mb-3) */
+        }
+        .media-content p.leading-relaxed.text-base.mb-4 { /* Targeting the main description paragraph */
+            margin-bottom: 0.75rem; /* Reduced from 1rem (mb-4) */
+        }
+
+
+        /* Button styles */
+        .btn-primary {
+            background: linear-gradient(to right, #34d399, #10b981); /* Green gradient */
+            color: white;
+            padding: 0.8rem 1.8rem; /* Larger padding */
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 700; /* Bolder font */
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(52, 211, 153, 0.3); /* Green shadow */
+            display: inline-block;
+            text-align: center;
+            letter-spacing: 0.025em; /* Slight letter spacing */
+            position: relative; /* For ripple effect */
+            overflow: hidden; /* Hide ripple overflow */
+            z-index: 1;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(to right, #10b981, #059669); /* Darker gradient on hover */
+            transform: translateY(-3px) scale(1.02); /* More pronounced hover */
+            box-shadow: 0 8px 16px rgba(52, 211, 153, 0.4);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 8px rgba(52, 211, 153, 0.2);
+        }
+
+        /* Ripple effect for buttons */
+        .btn-primary:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1) translate(-50%, -50%);
+            transform-origin: 50% 50%;
+        }
+
+        .btn-primary:focus:not(:active)::after {
+            animation: ripple 1s ease-out forwards;
+        }
+
+        @keyframes ripple {
+            from {
+                transform: scale(0) translate(-50%, -50%);
+                opacity: 1;
+            }
+            to {
+                transform: scale(20) translate(-50%, -50%);
+                opacity: 0;
+            }
+        }
+
+
+        /* Responsive adjustments for media grid */
+        @media (min-width: 640px) { /* sm breakpoint */
+            .media-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .media-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center rounded-b-xl">
+        <div class="flex items-center">
+            <a href="index.html" class="text-2xl font-bold text-green-700 hover:text-green-800 transition-colors">Muddy Blooms</a>
+        </div>
+        <nav>
+            <a href="index.html" class="btn-primary">Back to Home</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section mt-8 mx-4 md:mx-auto max-w-6xl rounded-3xl">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+            Muddy Blooms in the Media
+        </h1>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto">
+            We're proud to share the recognition Muddy Blooms has received from leading news channels.
+            Explore our features and see what they're saying about our passion.
+        </p>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="container mx-auto px-4 py-12">
+
+        <!-- News Channel Features Section -->
+        <section class="mb-12">
+            <h2 class="text-4xl font-bold text-green-800 mb-8 text-center">News Channel Features</h2>
+            <div class="media-grid grid grid-cols-1 gap-8">
+
+                <!-- Manorama News Feature -->
+                <div class="media-card">
+                    <div class="media-thumbnail-container">
+                        <img src="images/mediacoverage/Nattupacha.png" alt="Manorama News Logo">
+                    </div>
+                    <div class="media-content">
+                        <div>
+                            <h3 class="font-semibold mb-2">Manorama News - "Nattupacha" Segment</h3>
+                            <p class="text-gray-600 text-sm mb-3"><strong>Date:</strong> 26 January 2018 | <strong>Topic:</strong>Featuring Muddy Blooms' Orchid & Messengiana Cultivation</p>
+                            <p class="leading-relaxed text-base mb-4">
+                                Our expertise in horticulture was showcased on Manorama News's popular 'Nattupacha' segment. The broadcast provided an insightful look into Muddy Blooms' comprehensive cultivation of exquisite Annie Black Orchids, covering everything from ideal climate and detailed cultivation methods to successful marketing strategies. The segment also highlighted our specialized cultivation of Messengiana leaves, grown specifically for their beautiful decorative appeal, affirming our commitment to diverse and innovative plant solutions.
+                            </p>
+                        </div>
+                        <a href="https://youtu.be/eIfJS37BSeQ?si=Lgr9SvXJlpCcO1Ha" target="_blank" class="btn-primary mt-auto">Watch Feature</a>
+                    </div>
+                </div>
+
+                <!-- Kissan Krishideepam Feature -->
+                <div class="media-card">
+                    <div class="media-thumbnail-container">
+                        <img src="images/mediacoverage/kissan.jpg" alt="Kissan Krishideepam">
+                    </div>
+                    <div class="media-content">
+                        <div>
+                            <h3 class="font-semibold mb-2">Kissan Krishideepam</h3>
+                            <p class="text-gray-600 text-sm mb-3"><strong>Date:</strong> 30 March 2022 | <strong>Topic:</strong> Muddy Blooms' Orchids, Messengiana & Indoor Landscaping Expertise</p>
+                            <p class="leading-relaxed text-base mb-4">
+                                Muddy Blooms was prominently featured on Kissan Krishideepam, offering an in-depth look at our comprehensive horticultural practices. The broadcast showcased our meticulous cultivation, marketing strategies, and ideal climate conditions for exquisite Annie Black Orchids. Additionally, the segment highlighted our specialized cultivation of Messengiana leaves for decorative applications and provided valuable insights into the innovative use of indoor plants for modern landscaping solutions.</p>
+                        </div>
+                        <a href="https://youtu.be/6yDxPs3fclc?si=xXT8i17BLMyb4A8P" target="_blank" class="btn-primary mt-auto">Watch Feature</a>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <div class="media-thumbnail-container">
+                        <img src="images/mediacoverage/3rd.png" alt="Kissan Krishideepam">
+                    </div>
+                    <div class="media-content">
+                        <div>
+                            <h3 class="font-semibold mb-2">Vlogger B</h3>
+                            <p class="text-gray-600 text-sm mb-3"><strong>Date:</strong> 9 April 2022 | <strong>Topic:</strong> Muddy Blooms' Holistic Plant Solutions</p>
+                            <p class="leading-relaxed text-base mb-4">
+                               This feature explored our philosophy of creating personalized green spaces, including our specialized cultivation of exquisite Annie Black Orchids and the unique Messengiana leaves for decorative purposes. It further delved into our expertise in integrating a variety of indoor plants for creating lush, vibrant living environments that enhance well-being.</div>
+                        <a href="https://youtu.be/krztS6GUlyE?si=EABW9au83f-u_Yl-" target="_blank" class="btn-primary mt-auto">Watch Feature</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section (Optional, can be copied from index.html) -->
+    <footer class="bg-gray-800 text-white py-6 mt-12 rounded-t-xl">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 Muddy Blooms. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

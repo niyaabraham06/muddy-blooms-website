@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muddy Blooms - Residential Projects</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Inter font and additional aesthetics */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8; /* Light background */
+            color: #333;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Hero section specific styles */
+        .hero-section {
+            background-color: #e0f2f7; /* Light blue background */
+            padding: 4rem 0;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        /* Project card specific styles */
+        .project-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12); /* Slightly larger shadow on hover */
+        }
+
+        .project-image-container {
+            position: relative;
+            width: 100%;
+            height: 300px; /* Fixed height for consistency */
+            overflow: hidden;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .project-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure image covers the area */
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image-container img {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .client-review-block {
+            background-color: #f0fdf4; /* Light green background for review */
+            border-left: 5px solid #22c55e; /* Green border */
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .client-review-block blockquote {
+            font-style: italic;
+            color: #4b5563; /* Darker text for quote */
+            margin-bottom: 0.5rem;
+        }
+
+        .client-review-block p {
+            text-align: right;
+            font-weight: 600;
+            color: #16a34a; /* Green text for name */
+        }
+
+        /* Button styles */
+        .btn-primary {
+            background-color: #10b981; /* Emerald green */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px; /* Fully rounded */
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary:hover {
+            background-color: #059669; /* Darker green on hover */
+            transform: translateY(-2px);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .project-grid {
+                grid-template-columns: repeat(3, 1fr); /* Three columns on large screens */
+            }
+        }
+
+        /* Gallery specific styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid for thumbnails */
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100px; /* Fixed height for gallery thumbnails */
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm py-4 px-6 flex justify-between items-center rounded-b-xl">
+        <div class="flex items-center">
+            <a href="index.html" class="text-2xl font-bold text-green-700 hover:text-green-800 transition-colors">Muddy Blooms</a>
+        </div>
+        <nav>
+            <a href="index.html" class="btn-primary">Back to Home</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section mt-8 mx-4 md:mx-auto max-w-6xl rounded-xl">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-green-800 mb-4 leading-tight">
+            Our Latest Residential Landscaping
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+            Explore our initial portfolio of beautiful and functional outdoor spaces we've created for homes.
+            Each project is a testament to our dedication to quality and client satisfaction, showcasing the beginning of our journey.
+        </p>
+    </section>
+
+    <!-- Projects Grid Section -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="project-grid grid grid-cols-1 gap-8">
+
+            <!-- Sample Project 1: The Serene Oasis - Thekkumkattil Residence -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <!-- Main image for the project -->
+                    <img src="images/index/index landscape/residential-landscaping/residence_main.jpg" alt="Thekkumkattil Residence Landscaping Project Main Image">
+                </div>
+                <div class="project-content">
+                    <h2 class="text-3xl font-semibold text-green-700 mb-3">The Thekkumkattil Residence - Serene Oasis</h2>
+                    <p class="text-gray-600 mb-4"><strong>Client:</strong> Mr. Subin Mathew| <strong>Location:</strong> [Kottayam,Kerala] | <strong>Time Period:</strong> [February 2024 - August 2024]</p>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        This project was a true collaboration with Mr. and Mrs. Subin Thekkumkattil, who were building their new home. We had the privilege of handling their complete landscaping work, focusing on creating a harmonious blend of indoor and outdoor greenery. We meticulously placed plants inside their home to enhance living spaces and designed a tranquil garden oasis outside, ensuring a seamless connection with nature.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                        <li>Comprehensive indoor plantscaping design and installation</li>
+                        <li>Custom garden design and outdoor plant placement</li>
+                        <li>Low-maintenance native plant selection for sustainability</li>
+                    </ul>
+
+                    <!-- Project Gallery Section -->
+                    <div class="mt-8">
+                        <h3 class="text-2xl font-semibold text-green-700 mb-4">Project Gallery</h3>
+                        <div class="gallery-grid">
+                            <!-- Replace with your actual image paths -->
+                            <div class="gallery-item">
+                                <img src="images/index/index landscape/residential-landscaping/project_gallery1.jpg" alt="Thekkumkattil Landscaping 1">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/index/index landscape/residential-landscaping/project_gallery2.jpg" alt="Thekkumkattil Landscaping 2">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/index/index landscape/residential-landscaping/project_gallery3.jpg" alt="Thekkumkattil Landscaping 3">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/index/index landscape/residential-landscaping/project_gallery4.jpg" alt="Thekkumkattil Landscaping 4">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/index/index landscape/residential-landscaping/project_gallery5.jpg" alt="Thekkumkattil Landscaping 5">
+                            </div>
+                            <!-- Add more gallery items as needed -->
+                        </div>
+                    </div>
+
+                    <div class="client-review-block">
+                        <h4 class="text-xl font-bold text-green-800 mb-2">Client Review:</h4>
+                        <blockquote>
+                            We entrusted the landscaping of our new house to Aby Mathew from Muddy Blooms, requesting an abundance of green that was also easy to care for. He thoughtfully curated plants that seamlessly integrated with our home's architecture, even for our inner courtyards. A year later, we're thrilled with how vibrant and low-maintenance everything remains. The transformation of our house's aesthetic is remarkable, and we wholeheartedly recommend Muddy Blooms.
+                        </blockquote>
+                        <p>— Mr. and Mrs. Subin Thekkumkattil, [Kottayam,Kerala]</p>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </main>
+
+    <!-- Footer Section (Optional, can be copied from index.html) -->
+    <footer class="bg-gray-800 text-white py-6 mt-12 rounded-t-xl">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 Muddy Blooms. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

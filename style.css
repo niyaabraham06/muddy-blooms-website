@@ -422,7 +422,7 @@ ul {
 /* Updated Landscaping Grid for 3 equal columns on desktop */
 .landscaping-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Forces 3 equal columns on desktop */
+    grid-template-columns: 1fr 1fr; /* Forces 3 equal columns on desktop */
     gap: 30px; /* Space between items */
     justify-content: center; /* Center the grid within the container if it doesn't fill 100% */
 }
@@ -920,24 +920,6 @@ ul {
     margin-bottom: 10px;
 }
 
-.footer-newsletter input[type="email"] {
-    width: calc(100% - 100px);
-    padding: 12px;
-    border: 1px solid #555;
-    background-color: #333;
-    color: #fff;
-    border-radius: 5px;
-    margin-right: 10px;
-    box-sizing: border-box;
-}
-
-.footer-newsletter .btn-primary {
-    padding: 12px 20px;
-    font-size: 0.9em;
-    width: auto;
-    margin: 0;
-}
-
 .footer-bottom {
     border-top: 1px solid #444;
     padding-top: 20px;
@@ -1148,14 +1130,10 @@ body.menu-open .hamburger-menu {
         min-width: unset;
         width: 100%;
     }
-    .footer-about, .footer-links, .footer-contact, .footer-newsletter {
+    .footer-about, .footer-links, .footer-contact,{
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-    .footer-newsletter input[type="email"] {
-        width: calc(100% - 150px);
-        margin-right: 5px;
     }
 }
 
